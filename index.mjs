@@ -22,7 +22,7 @@ client.commands.set(deleteBirthdayData.name, { data: deleteBirthdayData, execute
 client.commands.set(editBirthdayData.name, { data: editBirthdayData, execute: executeEditBirthday });
 
 const token = process.env.DISCORD_TOKEN;
-const testChannelId = '1029049011467984977'; // Hardcoded channel ID for testing
+const birthdayChannelId = '1028982619116937217'; // Channel ID for birthday posts
 
 function getBirthdays() {
   const data = readFileSync('./birthdays.json', 'utf8');
@@ -74,25 +74,8 @@ function createBirthdayEmbed(character) {
   return embed;
 }
 
-function postRandomBirthday() {
-  const birthdays = getBirthdays();
-  const months = Object.keys(birthdays);
-  const randomMonth = months[Math.floor(Math.random() * months.length)];
-  const days = birthdays[randomMonth];
-  const randomDay = days[Math.floor(Math.random() * days.length)];
-  const character = randomDay;
-  character.month = randomMonth;
-
-  const testChannel = client.channels.cache.get(testChannelId);
-  if (testChannel) {
-    const embed = createBirthdayEmbed(character);
-    testChannel.send({ embeds: [embed] });
-  }
-}
-
 client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  postRandomBirthday();
   scheduleBirthdayPosts();
 });
 
@@ -142,20 +125,20 @@ function scheduleBirthdayPosts() {
     const day = parseInt(dateParts[2]);
 
     const birthdays = getBirthdays();
-    const characters = birthdays[month][day] || [];
+    const characters = birthdays[month]?.filter(b => parseInt(b.date) === day) || [];
     console.log(`Today's date: ${month} ${day}, Characters:`, characters);
 
-    const testChannel = client.channels.cache.get(testChannelId);
-    if (testChannel) {
+    const birthdayChannel = client.channels.cache.get(birthdayChannelId);
+    if (birthdayChannel) {
       if (characters.length > 0) {
         characters.forEach(character => {
           character.month = month;
           character.date = day;
           const embed = createBirthdayEmbed(character);
-          testChannel.send({ embeds: [embed] });
+          birthdayChannel.send({ embeds: [embed] });
         });
       } else {
-        testChannel.send('No character birthdays today.');
+        birthdayChannel.send('No character birthdays today.');
       }
     }
   });
