@@ -22,7 +22,7 @@ client.commands.set(deleteBirthdayData.name, { data: deleteBirthdayData, execute
 client.commands.set(editBirthdayData.name, { data: editBirthdayData, execute: executeEditBirthday });
 
 const token = process.env.DISCORD_TOKEN;
-const birthdayChannelId = '1028982619116937217'; // Channel ID for birthday posts
+const birthdayChannelId = '1210405664740868156'; // Channel ID for birthday posts
 
 function getBirthdays() {
   const data = readFileSync('./birthdays.json', 'utf8');
