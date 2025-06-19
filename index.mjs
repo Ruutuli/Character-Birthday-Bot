@@ -4,8 +4,8 @@ import { config } from './config.js';
 import { birthdayService } from './services/birthdayService.js';
 import { logger } from './utils/logger.js';
 import { addBirthdayData, executeAddBirthday } from './commands/addBirthdayCommand.mjs';
-import { deleteBirthdayData, executeDeleteBirthday, handleAutocomplete as handleDeleteAutocomplete } from './deleteBirthdayCommand.mjs';
-import { editBirthdayData, executeEditBirthday, handleAutocomplete as handleEditAutocomplete } from './editBirthdayCommand.mjs';
+import { deleteBirthdayData, executeDeleteBirthday, handleAutocomplete as handleDeleteAutocomplete } from './commands/deleteBirthdayCommand.mjs';
+import { editBirthdayData, executeEditBirthday, handleAutocomplete as handleEditAutocomplete } from './commands/editBirthdayCommand.mjs';
 import { viewBirthdayListData, executeViewBirthdayList } from './commands/viewBirthdayListCommand.mjs';
 
 // Initialize Discord client

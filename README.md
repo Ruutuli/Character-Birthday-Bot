@@ -48,7 +48,12 @@ A Discord bot that automatically posts character birthdays with beautiful embeds
 
 4. **Deploy slash commands**
    ```bash
-   npm run deploy
+   # Deploy to your test server (guild)
+   node deploy.js guild
+   # Deploy globally (may take up to 1 hour)
+   node deploy.js global
+   # Force deploy to both
+   node deploy.js force
    ```
 
 5. **Start the bot**
@@ -118,7 +123,7 @@ character-birthday-bot/
 │   └── logger.js
 ├── config.js                 # Configuration management
 ├── index.mjs                 # Main bot file
-├── deploy-commands.js        # Command deployment
+├── deploy.js                 # Unified command deployment script
 ├── birthdays.json            # Birthday data storage
 ├── package.json
 └── README.md
@@ -141,7 +146,7 @@ npm run lint
 1. Create a new command file in `commands/`
 2. Export the command data and execute function
 3. Register the command in `index.mjs`
-4. Update `deploy-commands.js`
+4. Update `deploy.js`
 
 ## 📊 Logging
 
@@ -207,3 +212,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Happy Birthday to all your favorite characters! 🎉**
+
+### Deploying Slash Commands
+
+Use the unified deploy script:
+
+- **Guild deploy (fast, for testing):**
+  ```bash
+  node deploy.js guild
+  ```
+- **Global deploy (production, may take up to 1 hour):**
+  ```bash
+  node deploy.js global
+  ```
+- **Force deploy to both:**
+  ```bash
+  node deploy.js force
+  ```
