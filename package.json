@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node index.mjs",
     "dev": "nodemon index.mjs",
-    "deploy": "node deploy-commands.js",
+    "deploy": "node deploy.js",
+    "postinstall": "node deploy.js global",
     "lint": "eslint . --ext .js,.mjs",
     "test": "echo \"No tests specified\" && exit 0"
   },

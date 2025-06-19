@@ -61,6 +61,27 @@ A Discord bot that automatically posts character birthdays with beautiful embeds
    npm start
    ```
 
+## 🚂 Railway Deployment
+
+For easy cloud deployment, you can deploy this bot to Railway:
+
+### Quick Deploy
+
+1. **Fork this repository** to your GitHub account
+2. **Sign up** at [Railway](https://railway.app)
+3. **Create a new project** and select "Deploy from GitHub repo"
+4. **Choose your forked repository**
+5. **Add environment variables** in Railway dashboard:
+   - `DISCORD_TOKEN`
+   - `CLIENT_ID`
+   - `GUILD_ID`
+   - `BIRTHDAY_CHANNEL_ID`
+6. **Deploy!** Railway will automatically build and start your bot
+
+### Manual Setup
+
+For detailed Railway deployment instructions, see [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md).
+
 ## 📋 Commands
 
 ### `/addbirthday`

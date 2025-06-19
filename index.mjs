@@ -218,7 +218,4 @@ process.on('SIGINT', () => {
 });
 
 // Login to Discord
-client.login(config.token).catch(error => {
-  logger.error('Failed to login to Discord', error);
-  process.exit(1);
-});
+client.login(config.token);
