@@ -171,16 +171,14 @@ npm run lint
 
 ## 📊 Logging
 
-The bot includes comprehensive logging:
+The bot includes comprehensive logging that outputs to the console:
 
 - **Info Logs**: Command executions, successful operations
 - **Error Logs**: Errors with stack traces
 - **Warning Logs**: Potential issues
 - **Debug Logs**: Detailed information (development only)
 
-Logs are stored in the `logs/` directory:
-- `logs/info.log` - General information
-- `logs/errors.log` - Error details
+When deployed on Railway, all logs are visible in the Railway dashboard console for easy monitoring and debugging.
 
 ## 🚨 Troubleshooting
 
