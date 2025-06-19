@@ -1,18 +1,43 @@
 {
   "name": "character-birthday-bot",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "A Discord bot that automatically posts character birthdays with beautiful embeds and customizable messages",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "start": "node index.mjs"
+    "start": "node index.mjs",
+    "dev": "NODE_ENV=development node index.mjs",
+    "deploy": "node deploy-commands.js",
+    "lint": "eslint . --ext .js,.mjs",
+    "test": "echo \"No tests specified\" && exit 0"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "discord",
+    "bot",
+    "birthday",
+    "anime",
+    "character",
+    "automation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^14.15.3",
-    "dotenv": "^10.0.0",
-    "node-fetch": "^2.6.1",
-    "node-schedule": "^2.0.0"
-  }
+    "dotenv": "^16.3.1",
+    "node-schedule": "^2.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/character-birthday-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/character-birthday-bot/issues"
+  },
+  "homepage": "https://github.com/yourusername/character-birthday-bot#readme"
 }

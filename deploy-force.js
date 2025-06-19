@@ -1,15 +1,11 @@
 import { REST, Routes } from 'discord.js';
 import dotenv from 'dotenv';
-import { addBirthdayData } from './addBirthdayCommand.mjs';
+import { addBirthdayData } from './commands/addBirthdayCommand.mjs';
 import { deleteBirthdayData } from './deleteBirthdayCommand.mjs';
-import { editBirthdayData } from './editBirthdayCommand.mjs';
+import { editBirthdayData } from './commands/editBirthdayCommand.mjs';
 import { viewBirthdayListData } from './commands/viewBirthdayListCommand.mjs';
 
 dotenv.config();
-
-console.log(`DISCORD_TOKEN: ${process.env.DISCORD_TOKEN}`);
-console.log(`CLIENT_ID: ${process.env.CLIENT_ID}`);
-console.log(`GUILD_ID: ${process.env.GUILD_ID}`);
 
 const commands = [
   addBirthdayData.toJSON(),
@@ -20,17 +16,24 @@ const commands = [
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
-(async () => {
+async function deployCommands() {
   try {
-    console.log('Started refreshing application (/) commands.');
-
+    console.log('🔄 Force deploying commands...');
+    
+    // Deploy to guild (immediate)
     await rest.put(
       Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
       { body: commands }
     );
-
-    console.log('Successfully reloaded application (/) commands.');
+    
+    console.log('✅ Guild commands deployed successfully!');
+    console.log('🎯 Commands should appear immediately in your server.');
+    console.log('💡 Try typing "/" in any channel to see the commands.');
+    
   } catch (error) {
-    console.error(error);
+    console.error('❌ Error deploying commands:', error);
   }
-})();
+}
+
+// Deploy immediately
+deployCommands(); 
